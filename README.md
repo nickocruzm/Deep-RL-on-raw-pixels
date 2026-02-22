@@ -1,45 +1,20 @@
-# CS258-FinalProject
+# Deep Reinforcement Learning with Raw pixel data
 
-## Pong
+Reinforcement learning with visual data has significant implications for fields like robotics,
+autonomous systems, and game AI, where agents need to act based on complex,
+high-dimensional sensory input. Traditionally, Convolutional Neural Networks have been
+employed in RL tasks for processing image data, but recent advancements in Vision
+Transformers suggest they could also excel in visual RL tasks by capturing long-range
+dependencies. This project aims to compare the effectiveness of CNNs and ViTs when fed raw
+pixel data, with the goal of evaluating their ability to learn robust policies directly from visual
+inputs.
+We experiment with three different Atari games from the gym library: Pong, Breakout, and
+Space Invaders. We experiment with a CNN and ViT architecture as the neural network
+backbone for Double DQN and PPO. Through our experiments, we conclude that in their current
+state, Vision Transformers are not suitable as the neural network backbone of a reinforcement
+learning agent. We further hypothesize that transformers will not make good neural network
+backbones for any agents with states not in pixel values due to many of the reasons that ViTs
+fail.
 
-- `frameskip=4`
-- `repeat_action_probability=0.25`
-- `full_action_space=True`
-- `mode = 0` (default)
-- Difficult = 0 (default)
-- 
-### Action Space
-0: NOOP
-1: FIRE
-2: RIGHT
-3: LEFT
-4: RIGHTFIRE
-5: LEFTFIRE
+For full report: [Project Report](RL%20Project%20Report.pdf)
 
-### Observation Space
-#### Pixel Dimensions:
-
-- 210-pixel height
-- 160-pixel width
-- 3 color channels (RGB)
-
-
-##### Notes
-
-```python3
-    gym.Env.render(self) 
-```
-
-Compute the render frames as specified by render_mode attribute during initialization of the environment.
-
-The set of supported modes varies per environment. (And some third-party environments may not support rendering at all.) By convention, if render_mode is:
-
-None (default): no render is computed.
-
-human: render return None. The environment is continuously rendered in the current display or terminal. Usually for human consumption.
-
-rgb_array: return a single frame representing the current state of the environment. A frame is a numpy.ndarray with shape (x, y, 3) representing RGB values for an x-by-y pixel image.
-
-rgb_array_list: return a list of frames representing the states of the environment since the last reset. Each frame is a numpy.ndarray with shape (x, y, 3), as with rgb_array.
-
-ansi: Return a strings (str) or StringIO.StringIO containing a terminal-style text representation for each time step. The text can include newlines and ANSI escape sequences (e.g. for colors).
